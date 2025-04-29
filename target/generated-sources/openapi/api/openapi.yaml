@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  description: A simple single-player maze game.
+  title: Maze Game API
+  version: 1.0.0
+servers:
+- url: https://mazegame.rinderle.info
+paths:
+  /game:
+    post:
+      description: Creates a new game instance and returns the initial player position.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameInput'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+          description: Game started successfully
+      summary: Start a new game
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /game/{gameId}:
+    get:
+      description: Retrieves the current game status.
+      parameters:
+      - explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+          description: Game status retrieved successfully
+        "404":
+          description: Game not found
+      summary: Get game status
+      x-accepts:
+      - application/json
+  /game/{gameId}/move:
+    get:
+      description: Retrieves the history of moves the player has made in the game.
+      parameters:
+      - explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Move'
+                type: array
+          description: List of all moves made by the player
+        "404":
+          description: Game not found
+      summary: Get all moves
+      x-accepts:
+      - application/json
+    post:
+      description: Move the player in the given direction.
+      parameters:
+      - explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: number
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Move'
+          description: Move result
+      summary: Move in the maze
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /game/{gameId}/move/{moveId}:
+    get:
+      description: Retrieves the move.
+      parameters:
+      - explode: false
+        in: path
+        name: gameId
+        required: true
+        schema:
+          type: number
+        style: simple
+      - explode: false
+        in: path
+        name: moveId
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Move'
+          description: Game status retrieved successfully
+        "404":
+          description: Move not found
+      summary: Get move
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    Game:
+      example:
+        gameId: 0.8008281904610115
+        groupName: groupName
+        position:
+          positionY: 1
+          positionX: 1
+        status: ongoing
+      properties:
+        gameId:
+          type: number
+        groupName:
+          type: string
+        position:
+          $ref: '#/components/schemas/Position'
+        status:
+          $ref: '#/components/schemas/GameStatus'
+      type: object
+    GameInput:
+      properties:
+        groupName:
+          type: string
+      type: object
+    MoveInput:
+      properties:
+        direction:
+          $ref: '#/components/schemas/Direction'
+      type: object
+    Move:
+      example:
+        moveStatus: moved
+        positionAfterMove:
+          positionY: 1
+          positionX: 1
+        moveId: 0.8008281904610115
+        direction: left
+      properties:
+        moveId:
+          type: number
+        direction:
+          $ref: '#/components/schemas/Direction'
+        positionAfterMove:
+          $ref: '#/components/schemas/Position'
+        moveStatus:
+          $ref: '#/components/schemas/MoveStatus'
+      type: object
+    Position:
+      example:
+        positionY: 1
+        positionX: 1
+      properties:
+        positionX:
+          example: 1
+          type: number
+        positionY:
+          example: 1
+          type: number
+      type: object
+    GameStatus:
+      enum:
+      - ongoing
+      - failed
+      - success
+      type: string
+    MoveStatus:
+      enum:
+      - moved
+      - blocked
+      - failed
+      type: string
+    Direction:
+      enum:
+      - left
+      - up
+      - right
+      - down
+      type: string
+
