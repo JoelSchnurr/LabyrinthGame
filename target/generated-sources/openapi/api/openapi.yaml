@@ -125,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Move'
-          description: Game status retrieved successfully
+          description: Move retrieved successfully
         "404":
           description: Move not found
       summary: Get move
@@ -140,6 +140,9 @@ components:
         position:
           positionY: 1
           positionX: 1
+        availableMoves:
+        - left
+        - left
         status: ongoing
       properties:
         gameId:
@@ -150,6 +153,20 @@ components:
           $ref: '#/components/schemas/Position'
         status:
           $ref: '#/components/schemas/GameStatus'
+        availableMoves:
+          items:
+            enum:
+            - left
+            - up
+            - right
+            - down
+            type: string
+          type: array
+      required:
+      - availableMoves
+      - gameId
+      - position
+      - status
       type: object
     GameInput:
       properties:

@@ -23,6 +23,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -33,13 +36,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   GameDto.JSON_PROPERTY_GAME_ID,
   GameDto.JSON_PROPERTY_GROUP_NAME,
   GameDto.JSON_PROPERTY_POSITION,
-  GameDto.JSON_PROPERTY_STATUS
+  GameDto.JSON_PROPERTY_STATUS,
+  GameDto.JSON_PROPERTY_AVAILABLE_MOVES
 })
 @JsonTypeName("Game")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-29T21:25:06.742188700+02:00[Europe/Berlin]", comments = "Generator version: 7.10.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-01T23:38:36.918660300+02:00[Europe/Berlin]", comments = "Generator version: 7.10.0")
 public class GameDto {
   public static final String JSON_PROPERTY_GAME_ID = "gameId";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private BigDecimal gameId;
 
   public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
@@ -47,17 +51,60 @@ public class GameDto {
   private String groupName;
 
   public static final String JSON_PROPERTY_POSITION = "position";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private PositionDto position;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   private GameStatusDto status;
+
+  /**
+   * Gets or Sets availableMoves
+   */
+  public enum AvailableMovesEnum {
+    LEFT(String.valueOf("left")),
+    
+    UP(String.valueOf("up")),
+    
+    RIGHT(String.valueOf("right")),
+    
+    DOWN(String.valueOf("down"));
+
+    private String value;
+
+    AvailableMovesEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AvailableMovesEnum fromValue(String value) {
+      for (AvailableMovesEnum b : AvailableMovesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_AVAILABLE_MOVES = "availableMoves";
+  @jakarta.annotation.Nonnull
+  private List<AvailableMovesEnum> availableMoves = new ArrayList<>();
 
   public GameDto() {
   }
 
-  public GameDto gameId(@jakarta.annotation.Nullable BigDecimal gameId) {
+  public GameDto gameId(@jakarta.annotation.Nonnull BigDecimal gameId) {
     
     this.gameId = gameId;
     return this;
@@ -67,9 +114,9 @@ public class GameDto {
    * Get gameId
    * @return gameId
    */
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_GAME_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getGameId() {
     return gameId;
@@ -77,8 +124,8 @@ public class GameDto {
 
 
   @JsonProperty(JSON_PROPERTY_GAME_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGameId(@jakarta.annotation.Nullable BigDecimal gameId) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGameId(@jakarta.annotation.Nonnull BigDecimal gameId) {
     this.gameId = gameId;
   }
 
@@ -107,7 +154,7 @@ public class GameDto {
     this.groupName = groupName;
   }
 
-  public GameDto position(@jakarta.annotation.Nullable PositionDto position) {
+  public GameDto position(@jakarta.annotation.Nonnull PositionDto position) {
     
     this.position = position;
     return this;
@@ -117,9 +164,9 @@ public class GameDto {
    * Get position
    * @return position
    */
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_POSITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PositionDto getPosition() {
     return position;
@@ -127,12 +174,12 @@ public class GameDto {
 
 
   @JsonProperty(JSON_PROPERTY_POSITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPosition(@jakarta.annotation.Nullable PositionDto position) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPosition(@jakarta.annotation.Nonnull PositionDto position) {
     this.position = position;
   }
 
-  public GameDto status(@jakarta.annotation.Nullable GameStatusDto status) {
+  public GameDto status(@jakarta.annotation.Nonnull GameStatusDto status) {
     
     this.status = status;
     return this;
@@ -142,9 +189,9 @@ public class GameDto {
    * Get status
    * @return status
    */
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public GameStatusDto getStatus() {
     return status;
@@ -152,9 +199,42 @@ public class GameDto {
 
 
   @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@jakarta.annotation.Nullable GameStatusDto status) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStatus(@jakarta.annotation.Nonnull GameStatusDto status) {
     this.status = status;
+  }
+
+  public GameDto availableMoves(@jakarta.annotation.Nonnull List<AvailableMovesEnum> availableMoves) {
+    
+    this.availableMoves = availableMoves;
+    return this;
+  }
+
+  public GameDto addAvailableMovesItem(AvailableMovesEnum availableMovesItem) {
+    if (this.availableMoves == null) {
+      this.availableMoves = new ArrayList<>();
+    }
+    this.availableMoves.add(availableMovesItem);
+    return this;
+  }
+
+  /**
+   * Get availableMoves
+   * @return availableMoves
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AVAILABLE_MOVES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<AvailableMovesEnum> getAvailableMoves() {
+    return availableMoves;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AVAILABLE_MOVES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAvailableMoves(@jakarta.annotation.Nonnull List<AvailableMovesEnum> availableMoves) {
+    this.availableMoves = availableMoves;
   }
 
   @Override
@@ -169,12 +249,13 @@ public class GameDto {
     return Objects.equals(this.gameId, game.gameId) &&
         Objects.equals(this.groupName, game.groupName) &&
         Objects.equals(this.position, game.position) &&
-        Objects.equals(this.status, game.status);
+        Objects.equals(this.status, game.status) &&
+        Objects.equals(this.availableMoves, game.availableMoves);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gameId, groupName, position, status);
+    return Objects.hash(gameId, groupName, position, status, availableMoves);
   }
 
   @Override
@@ -185,6 +266,7 @@ public class GameDto {
     sb.append("    groupName: ").append(toIndentedString(groupName)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    availableMoves: ").append(toIndentedString(availableMoves)).append("\n");
     sb.append("}");
     return sb.toString();
   }

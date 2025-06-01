@@ -12,7 +12,7 @@ public class ApiConfig {
     @Bean
     public ApiClient apiClient() {
         ApiClient client = new ApiClient();
-        client.setBasePath("http://localhost:8080");
+        client.setBasePath("https://mazegame.rinderle.info");
         return client;
     }
 

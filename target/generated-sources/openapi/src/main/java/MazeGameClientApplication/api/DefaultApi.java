@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-29T21:25:06.742188700+02:00[Europe/Berlin]", comments = "Generator version: 7.10.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-01T23:38:36.918660300+02:00[Europe/Berlin]", comments = "Generator version: 7.10.0")
 public class DefaultApi {
     private ApiClient apiClient;
 
@@ -207,7 +207,7 @@ public class DefaultApi {
     /**
      * Get move
      * Retrieves the move.
-     * <p><b>200</b> - Game status retrieved successfully
+     * <p><b>200</b> - Move retrieved successfully
      * <p><b>404</b> - Move not found
      * @param gameId The gameId parameter
      * @param moveId The moveId parameter
@@ -251,7 +251,7 @@ public class DefaultApi {
     /**
      * Get move
      * Retrieves the move.
-     * <p><b>200</b> - Game status retrieved successfully
+     * <p><b>200</b> - Move retrieved successfully
      * <p><b>404</b> - Move not found
      * @param gameId The gameId parameter
      * @param moveId The moveId parameter
@@ -266,7 +266,7 @@ public class DefaultApi {
     /**
      * Get move
      * Retrieves the move.
-     * <p><b>200</b> - Game status retrieved successfully
+     * <p><b>200</b> - Move retrieved successfully
      * <p><b>404</b> - Move not found
      * @param gameId The gameId parameter
      * @param moveId The moveId parameter
@@ -281,7 +281,7 @@ public class DefaultApi {
     /**
      * Get move
      * Retrieves the move.
-     * <p><b>200</b> - Game status retrieved successfully
+     * <p><b>200</b> - Move retrieved successfully
      * <p><b>404</b> - Move not found
      * @param gameId The gameId parameter
      * @param moveId The moveId parameter

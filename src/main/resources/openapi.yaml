@@ -106,7 +106,7 @@ paths:
             type: number
       responses:
         '200':
-          description: Game status retrieved successfully
+          description: Move retrieved successfully
           content:
             application/json:
               schema:
@@ -127,6 +127,16 @@ components:
           $ref: "#/components/schemas/Position"
         status:
           $ref: "#/components/schemas/GameStatus"
+        availableMoves:
+          type: array
+          items:
+            type: string
+            enum: [ left, up, right, down ]
+      required:
+        - gameId
+        - position
+        - status
+        - availableMoves
 
     GameInput:
       type: object

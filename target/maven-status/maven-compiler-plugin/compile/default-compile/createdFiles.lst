@@ -19,6 +19,7 @@ MazeGameClientApplication\model\GameInputDto.class
 MazeGameClientApplication\invoker\ApiClient.class
 MazeGameClientApplication\api\DefaultApi$13.class
 MazeGameClientApplication\api\DefaultApi$12.class
+MazeGameClientApplication\StartupBean$1.class
 MazeGameClientApplication\MazeGameClientApplication.class
 MazeGameClientApplication\StartupBean.class
 MazeGameClientApplication\api\DefaultApi$6.class
@@ -28,6 +29,7 @@ MazeGameClientApplication\api\DefaultApi$1.class
 MazeGameClientApplication\model\GameDto.class
 MazeGameClientApplication\api\DefaultApi$8.class
 MazeGameClientApplication\invoker\auth\ApiKeyAuth.class
+MazeGameClientApplication\model\GameDto$AvailableMovesEnum.class
 MazeGameClientApplication\model\MoveStatusDto.class
 MazeGameClientApplication\invoker\StringUtil.class
 MazeGameClientApplication\api\DefaultApi$4.class
